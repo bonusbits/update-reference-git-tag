@@ -1,5 +1,5 @@
 # UpdateGitReleaseTag
-[![Circle CI](https://circleci.com/gh/bonusbits/update_git_release_tag/tree/master.svg?style=shield)](https://circleci.com/gh/bonusbits/update_git_release_tag)
+[![Circle CI](https://circleci.com/gh/bonusbits/update_git_release_tag.svg?style=shield)](https://circleci.com/gh/bonusbits/update_git_release_tag)
 [![Join the chat at https://gitter.im/bonusbits](https://badges.gitter.im/bonusbits/bonusbits.svg)](https://gitter.im/bonusbits?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Description
