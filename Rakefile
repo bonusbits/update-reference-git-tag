@@ -1,9 +1,11 @@
+require 'rake'
 require 'bundler/gem_tasks'
 require 'rspec/core/rake_task'
 
+# Unit Tests
 RSpec::Core::RakeTask.new(:spec)
 
-# Rubocop
+# Style Tests
 namespace :style do
   require 'rubocop/rake_task'
   desc 'RuboCop'

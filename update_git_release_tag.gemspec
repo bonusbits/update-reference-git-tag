@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Levon Becker']
   spec.email         = ['levon.becker.github@bonusbits.com']
 
-  spec.summary       = 'TODO: Write a short summary, because Rubygems requires one.'
-  spec.description   = 'TODO: Write a longer description or delete this line.'
+  spec.summary       = 'Update a Git repository release tag'
+  spec.description   = 'Remove and then Add back a git tag such as latest tag set to head'
   spec.homepage      = 'https://www.bonusbits.com'
   spec.license       = 'MIT'
 
@@ -26,6 +26,8 @@ Gem::Specification.new do |spec|
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
+
+  spec.required_ruby_version = '>= 2.1'
 
   spec.add_development_dependency 'bundler', '~> 1.12'
   spec.add_development_dependency 'rake', '~> 12.0'
