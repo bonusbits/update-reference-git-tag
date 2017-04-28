@@ -1,34 +1,41 @@
-# Update Reference Git Tag
-Simple Script to Update Reference Git Tag. Such as, "latest" or "dev". 
-Basically this can be used for moving a reference version tag such as latest.
-So we can set a tag such as **latest** to a specific commit version. 
-Currently it is wrote to set an alternative or reference tag to another tags commit version. 
-So if there is a release tag of 1.0.0, we can create another tag named **latest** that is the samve version as 1.0.0.
- Then we can when 1.0.1 is released we can use the script again to move the **latest** tag to 1.0.1 etc. 
- Of course we can then add this to your CI.
- 
-Basically the script removes that reference script and re-creates it at a new commit version.
+# UpdateGitReleaseTag
 
-# Usage
-```bash
-urgt.sh -r [release_tag_name] -n [new_tag_name]
-   
-Options:
-   -r Release Tag Name               :  (Required) i.e. v1.0.0
-   -n New Tag Name to add/replace    :  (Optional) i.e. latest, rc, dev, or beta. (Defaults to 'latest')
+Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/update_git_release_tag`. To experiment with that code, run `bin/console` for an interactive prompt.
+
+TODO: Delete this and the text above, and describe your gem
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'update_git_release_tag'
 ```
 
-### Symlink
-After cloning the repo local you optionally can make a symbolic link to the shell script so it's easily accessible as follows.
+And then execute:
 
-```bash
- if [ ! -h "/usr/local/bin/urgt" ]; then
-   ln -s "/path/to/clone/update_reference_git_tag/urgt.sh" /usr/local/bin/urgt
- fi
-```
+    $ bundle
 
-# Example
-1. Set release *latest* tag to *1.0.0* release
-    * ```urgt -r 1.0.0 -n latest```
-1. Set release *latest* tag to *1.1.0* release
-    * ```urgt -r 1.1.0 -n latest```
+Or install it yourself as:
+
+    $ gem install update_git_release_tag
+
+## Usage
+
+TODO: Write usage instructions here
+
+## Development
+
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+
+To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/update_git_release_tag. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
