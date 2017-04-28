@@ -1,6 +1,6 @@
 # UpdateGitReleaseTag
 [![Circle CI](https://circleci.com/gh/bonusbits/update_git_release_tag/tree/master.svg?style=shield)](https://circleci.com/gh/bonusbits/update_git_release_tag/tree/master)
-[![Join the chat at https://gitter.im/bonusbits](https://badges.gitter.im/bonusbits.svg)](https://gitter.im/bonusbits/bonusbits?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/bonusbits](https://badges.gitter.im/bonusbits/bonusbits.svg)](https://gitter.im/bonusbits?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Description
 Ruby Gem to quickly renew a git tag to a specific release locally and remotely. Such as, refreshing a tag named *latest* to the latest release.
