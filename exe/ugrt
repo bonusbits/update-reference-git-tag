@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'update_git_release_tag'
+require 'update_git_release_tag/cli'
 
 UpdateGitReleaseTag::Cli.run
