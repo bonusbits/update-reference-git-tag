@@ -6,18 +6,13 @@ require 'optparse'
 require 'pp'
 
 module UpdateGitReleaseTag
-  class Cli
-    # Parse Arguments/Options
-    @options = Hash.new
-
+  class Cli < OptionParser
     # Defaults
+    @options = Hash.new
     @options['release'] = 'master'
     @options['tag'] = 'latest'
-    # @options['project_root_path'] = File.expand_path File.dirname(__FILE__)
     @options['path'] = Dir.pwd
     @options['log_level'] = 'info'
-
-    # ARGV << '-h' if ARGV.empty?
 
     options_parser = OptionParser.new do |opts|
       opts.banner = 'Usage: ugrt -r master -t latest [OPTIONS]'
@@ -46,20 +41,42 @@ module UpdateGitReleaseTag
     end
     options_parser.parse(ARGV)
 
+    @logger = Logger.new(STDOUT)
+    @logger = Logger.new(STDERR)
+    # @logger.level = Logger::DEBUG
+    @logger.level =
+      case @options['log_level']
+      when 'info'
+        Logger::INFO
+      when 'warn'
+        Logger::WARN
+      when 'debug'
+        Logger::DEBUG
+      when 'fatal'
+        Logger::FATAL
+      else
+        Logger::INFO
+      end
+    @logger.progname = 'git commands'
+    @logger.datetime_format = '%Y-%m-%d_%H:%M:%S'
+    @logger.formatter = proc do |severity, datetime, progname, msg|
+      "[#{datetime}] #{severity}: (#{progname.upcase}) #{msg}\n"
+    end
+    # e.g. "2005-09-22 08:51:08 +0900: hello world"
+    # I, [2017-04-28 17:28:25#23575]  INFO -- git commands: Starting Git
+
     def self.run
-      # TODO: Logging
-      # puts "OPTIONS: #{@options}"
-      # Logger.log 'Running Git Command...'
-      # tags = git.tags
-      # Logger.log "Current Tags (#{tags})"
-      git = Git.open(@options['path'], log: Logger.new(STDOUT))
+      @logger.info 'Initializing...'
+      # @logger.info('git_commands') { 'Initializing...' }
+      git = Git.open(@options['path'], log: @logger)
       starting_point = git.branch
       git.pull
-      git.delete_tag(@options['tag']) # TODO: Error Handling / Condition
-      git.push('origin', "refs/tags/#{@options['tag']}", options: [force: true])
+      tags = git.tags
+      tags.each { |tag| git.delete_tag(@options['tag']) if tag.name.include?('latest') } unless tags.empty?
+      git.push('origin', ":refs/tags/#{@options['tag']}", options: [force: true])
       git.checkout(@options['release'])
       git.add_tag(@options['tag'], options: [annotate: true, force: true, message: 'Refreshed latest Tag'])
-      git.push('origin', "refs/tags/#{@options['tag']}", options: [force: true])
+      git.push('origin', options: [force: true, tags: true])
       git.checkout(starting_point)
     end
   end
