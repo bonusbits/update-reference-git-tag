@@ -75,8 +75,8 @@ module UpdateGitReleaseTag
       tags.each { |tag| git.delete_tag(@options['tag']) if tag.name.include?('latest') } unless tags.empty?
       git.push('origin', ":refs/tags/#{@options['tag']}", options: [force: true])
       git.checkout(@options['release'])
-      git.add_tag(@options['tag'], options: [annotate: true, force: true, message: 'Refreshed latest Tag'])
-      git.push('origin', options: [force: true, tags: true])
+      git.add_tag(@options['tag'], options: [annotate: true, force: true, message: 'Refreshed Release Tag'])
+      git.push('origin', 'master', options: [tags: true, force: true])
       git.checkout(starting_point)
     end
   end
