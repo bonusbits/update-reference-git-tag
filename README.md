@@ -1,4 +1,7 @@
-# Update Reference Git Tag
+# Update Git Reference Tag
+[![Project Release](https://img.shields.io/badge/release-v1.1.1-blue.svg)](https://github.com/bonusbits/update_git_release_tag)
+[![GitHub issues](https://img.shields.io/github/issues/bonusbits/update_git_release_tag.svg)](https://github.com/bonusbits/update_git_release_tag/issues)
+
 Simple Script to Update Reference Git Tag. Such as, "latest" or "dev". 
 Basically this can be used for moving a reference version tag such as latest.
 So we can set a tag such as **latest** to a specific commit version. 
@@ -11,7 +14,7 @@ Basically the script removes that reference script and re-creates it at a new co
 
 # Usage
 ```bash
-urgt.sh -r [release_tag_name] -n [new_tag_name]
+ugrt.sh -r [release_tag_name] -n [new_tag_name]
    
 Options:
    -r Release Tag Name               :  (Required) i.e. v1.0.0
@@ -22,13 +25,13 @@ Options:
 After cloning the repo local you optionally can make a symbolic link to the shell script so it's easily accessible as follows.
 
 ```bash
- if [ ! -h "/usr/local/bin/urgt" ]; then
-   ln -s "/path/to/clone/update_reference_git_tag/urgt.sh" /usr/local/bin/urgt
+ if [ ! -h "/usr/local/bin/ugrt" ]; then
+   ln -s "/path/to/clone/update_reference_git_tag/ugrt.sh" /usr/local/bin/ugrt
  fi
 ```
 
 # Example
 1. Set release *latest* tag to *1.0.0* release
-    * ```urgt -r 1.0.0 -n latest```
+    * ```ugrt -r 1.0.0 -n latest```
 1. Set release *latest* tag to *1.1.0* release
-    * ```urgt -r 1.1.0 -n latest```
+    * ```ugrt -r 1.1.0 -n latest```
