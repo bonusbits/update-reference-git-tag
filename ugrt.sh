@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 default_newtag="latest"
-script_version="v1.1.0"
+script_version="v1.1.1"
 
 function usage () {
 usagemessage="
