@@ -42,7 +42,11 @@ module UpdateGitReleaseTag
     options_parser.parse(ARGV)
 
     @logger = Logger.new(STDOUT)
-    @logger.level = Object.const_get("Logger::#{@options['log_level'].upcase}") rescue Logger::INFO
+    @logger.level = begin
+                      Object.const_get("Logger::#{@options['log_level'].upcase}")
+                    rescue
+                      Logger::INFO
+                    end
     # @logger.level = Logger::DEBUG
     @logger.level =
       case @options['log_level']
